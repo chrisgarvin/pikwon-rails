@@ -10,7 +10,7 @@ html,body {
 }
 a {
   text-decoration: none;
-  color: white;
+  color: #25acb6;
 }
 footer {
   text-align: center;
@@ -66,7 +66,6 @@ footer {
   font-size: 60px;
   font-weight: bolder;
   background-color: #3dd9da;
-  color: #f6f7fa;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,6 +73,10 @@ footer {
   flex-wrap: nowrap;
   align-content: center;
   align-items: center;
+}
+
+.options a {
+  color: #f6f7fa;
 }
 
 .options:hover {
