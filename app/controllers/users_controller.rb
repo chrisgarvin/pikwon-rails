@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
 
     @users = User.all
@@ -7,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
 
+    @headers = ["well check you out, ", "oh snap, it's ", "if i had to pikwon i'd pick you, ",
+       "oh hi ", "Q: Who's the best? A: "]
     # @user = User.find(params[:id])
 
   end
