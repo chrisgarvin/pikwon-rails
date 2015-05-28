@@ -1,0 +1,12 @@
+<div class="container">
+<% if current_user %>
+<h1>Username: <%= current_user.handle %></h1>
+<h1>First Name: <%= current_user.fname %></h1>
+<h1>Last Name: <%= current_user.lname %></h1>
+<h1>E-mail: <%= current_user.email %></h1>
+<h1>Member Since: <%= current_user.created_at.utc.strftime("%D") %></h1>
+<% else %>
+<h1>Have you signed up yet?</h1>
+<% end %>
+<%= link_to "BACK", "/" %>
+</div>
