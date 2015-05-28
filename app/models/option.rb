@@ -1,3 +1,3 @@
 class Option < ActiveRecord::Base
-  belongs_to :post, :class_name => Post, :foreign_key => "post_id"
+  has_many_and_belongs_to_many :posts
 end

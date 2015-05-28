@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528054527) do
+ActiveRecord::Schema.define(version: 20150528155758) do
 
   create_table "options", force: :cascade do |t|
     t.string   "option_text"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(version: 20150528054527) do
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "handle"
