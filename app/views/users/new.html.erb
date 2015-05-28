@@ -1,4 +1,6 @@
-<h1>Sign up</h1>
+<div class="container profile">
+
+<h1 class="header">SIGN-UP</h1>
 
    <%= form_for(@user) do |f| %>
      <%= f.text_field :fname, :placeholder => "First name" %><br>
@@ -8,3 +10,5 @@
      <%= f.password_field :password, :placeholder => "Password" %><br>
      <%= f.submit "Create an account", class: "btn-submit" %>
    <% end %>
+   <%= link_to "BACK", "/" %>
+ </div>
