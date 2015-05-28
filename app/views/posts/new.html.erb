@@ -1,2 +1,33 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<div class ="container">
+  <div class="logo">
+    <span class ="character">p</span>
+    <span class ="character">i</span>
+    <span class ="character">k</span>
+  </div>
+
+<%= form_for @post, :html => { :class => "form" } do |f| %>
+
+<div class="options_new">
+     <!-- <%= f.label :option1, "CHOOSE FIRST OPTION" %> -->
+     <%= f.text_field @option.option_text, :style => "width:100%; height: 18%;" %>
+ </div>
+
+ <div class="options_new">
+     <!-- <%= f.label :option2, "CHOOSE SECOND OPTION" %> -->
+     <%= f.text_field @option.option_text, :style => "width:100%;height: 18%;" %>
+ </div>
+
+ <div>
+     <%= f.submit "SUBMIT FOR PIKS" %>
+     <span class="new">
+     <%= link_to "BACK", posts_path %>
+     </span>
+ </div>
+
+ <% end %>
+<div class="logo">
+  <span class ="character">w</span>
+  <span class ="character">o</span>
+  <span class ="character">n</span>
+</div>
+</div>

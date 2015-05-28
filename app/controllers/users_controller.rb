@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
 
     @headers = ["well check you out, ", "oh snap, it's ", "if i had to pikwon i'd pick you, ",
-       "oh hi ", "Q: Who's the best? A: "]
+       "oh hi ", "Q: Who's the best? A: ", "100% pretty cool -> "]
     # @user = User.find(params[:id])
 
   end
