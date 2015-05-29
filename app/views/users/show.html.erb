@@ -11,3 +11,20 @@
 <% end %>
 <%= link_to "BACK", "/" %>
 </div>
+<% if current_user %>
+
+<% current_user.posts.each do |post| %>
+
+<div class="post_history">
+
+  <div class="profile_options">
+  <%= post.options.first.option_text.upcase %>
+  </div>
+  <div class="profile_options">
+    <%= post.options.second.option_text.upcase %>
+  </div>
+</div>
+
+<% end %>
+
+<% end %>

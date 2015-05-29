@@ -6,9 +6,6 @@ class PostsController < ApplicationController
     @posts = Post.all
     @options = Option.all
 
-    @option1 = "Option 1".upcase
-    @option2 = "Option 2".upcase
-
   end
 
   def show
@@ -31,6 +28,7 @@ class PostsController < ApplicationController
 
     @post.options << @option
 
+
     @option = Option.new(:option_text => params[:test][:option_text_two])
 
     @post.options << @option
@@ -38,7 +36,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @option.save
-      @option.post_id = @post.id
       @post.save
       redirect_to posts_path
     else

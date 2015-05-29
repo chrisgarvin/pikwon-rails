@@ -6,9 +6,10 @@
   <span class ="character">k</span>
 </div>
 
+<% @posts.all.sample(1).each do |post| %>
 <div class="options">
 
-  <a href=""><%= @option1 %></a>
+  <a href=""><%= post.options.first.option_text.upcase %></a>
 
 </div>
 <span class="new">
@@ -16,9 +17,11 @@
 </span>
 <div class="options">
 
-  <a href=""><%= @option2 %></a>
+  <a href=""><%= post.options.second.option_text.upcase %></a>
 
 </div>
+
+<% end %>
 
 <div class="logo">
   <span class ="character">w</span>
