@@ -1,4 +1,8 @@
 class OptionsController < ApplicationController
+  before_action :require_user
+
+  @posts = Post.all
+
   def index
   end
 
@@ -6,8 +10,11 @@ class OptionsController < ApplicationController
   end
 
   def new
+
   end
 
   def create
+
   end
+
 end
