@@ -11,6 +11,8 @@ class OptionsController < ApplicationController
 
   def new
 
+    @option = Option.crate(:option_text => :option_text_one)
+
   end
 
   def create

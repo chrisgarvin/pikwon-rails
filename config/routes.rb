@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'options/new' => "posts#new"
 
-  post 'options/' => "posts#create"
+  post 'options/new' => "posts#create"
 
   get 'users/index'
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "posts/" => "posts#index"
   get "posts/new" => "posts#new", as: :new_post
   get "posts/:id" => "posts#show", as: :post
-  post "posts/" => "posts#create"
+  post "posts/new" => "posts#create"
 
   get "signup/" => "users#new"
   post "users/" => "users#create"

@@ -11,16 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528181232) do
+ActiveRecord::Schema.define(version: 20150529212518) do
 
   create_table "options", force: :cascade do |t|
     t.string   "option_text"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "post_id"
   end
-
-  add_index "options", ["post_id"], name: "index_options_on_post_id"
 
   create_table "options_posts", force: :cascade do |t|
     t.integer "option_id"

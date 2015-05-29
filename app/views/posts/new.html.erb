@@ -5,23 +5,21 @@
     <span class ="character">k</span>
   </div>
 
-<%= form_for @option, :html => { :class => "form" } do |f| %>
+<%= form_for :test, :html => { :class => "form" } do |f| %>
+
 
 <div class="options_new">
-     <!-- <%= f.label :option1, "CHOOSE FIRST OPTION" %> -->
-     <%= f.text_field :option_text %>
+     <%= f.text_field :option_text_one %>
+ </div>
+
+ <div class="options_new">
+     <%= f.text_field :option_text_two %>
  </div>
  <div>
      <%= f.submit "SUBMIT FOR PIKS" %>
      <span class="new">
      <%= link_to "BACK", posts_path %>
      </span>
- </div>
-
- <div class="options_new">
-     <!-- <%= f.label :option2, "CHOOSE SECOND OPTION" %> -->
-     <!-- <%#= f.text_field Option.create!(:option_text), :style => "width:100%;height: 18%;" %> -->
-     <%= f.text_field :option_text %>
  </div>
 
  <% end %>

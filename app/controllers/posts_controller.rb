@@ -19,19 +19,23 @@ class PostsController < ApplicationController
 
   def new
 
-    @option = Option.new
     @post = Post.new
 
   end
 
   def create
 
-    @option = Option.new(option_params)
     @post = Post.new
+
+    @option = Option.new(:option_text => params[:test][:option_text_one])
+
+    @post.options << @option
+
+    @option = Option.new(:option_text => params[:test][:option_text_two])
+
+    @post.options << @option
+
     @post.user_id = current_user.id
-    @post.options << @option
-    @option = Option.new(option_params)
-    @post.options << @option
 
     if @option.save
       @option.post_id = @post.id
@@ -47,7 +51,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:option_text, :option_ids => [])
+    params.require(:post).permit(:option_ids => [])
   end
 
   def option_params
