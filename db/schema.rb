@@ -11,18 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529212518) do
+ActiveRecord::Schema.define(version: 20150531010140) do
 
   create_table "options", force: :cascade do |t|
     t.string   "option_text"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "option_picks", default: 0
   end
 
   create_table "options_posts", force: :cascade do |t|
     t.integer "option_id"
     t.integer "post_id"
   end
+
+  create_table "picks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "option_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "picks", ["option_id"], name: "index_picks_on_option_id"
+  add_index "picks", ["user_id"], name: "index_picks_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false

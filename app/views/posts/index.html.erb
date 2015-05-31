@@ -9,7 +9,7 @@
 <% @posts.all.sample(1).each do |post| %>
 <div class="options">
 
-  <a href=""><%= post.options.first.option_text.upcase %></a>
+  <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id) %>
 
 </div>
 <span class="new">
@@ -17,7 +17,7 @@
 </span>
 <div class="options">
 
-  <a href=""><%= post.options.second.option_text.upcase %></a>
+  <%= link_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id) %>
 
 </div>
 

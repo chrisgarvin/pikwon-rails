@@ -4,7 +4,7 @@
 
 html,body {
   background: white;
-  height: 97%;
+  height: 100%;
   font-size: 10px;
   font-family: 'Raleway', sans-serif;
 }
@@ -147,6 +147,9 @@ header a:hover {
 .post_history {
   width: 33%;
   display: inline-block;
+  text-align: center;
+  font-size: 8px;
+  color: #25acb6;
 }
 .profile_options {
   width: 100%;
@@ -166,4 +169,8 @@ header a:hover {
   align-items: center;
   padding: 5px 0 5px 0;
   color: white;
+}
+.likes {
+  display: block;
+  font-size: 8px;
 }

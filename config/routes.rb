@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'picks/' => "picks#like"
+
+  get 'picks/new'
+
+  get 'picks/show'
+
   get 'options/' => "posts#index"
 
   get 'options/new' => "posts#new"
