@@ -6,7 +6,9 @@
   <span class ="character">k</span>
 </div>
 
-<% @posts.all.sample(1).each do |post| %>
+<%-# Finding all posts that were not created by current_user -%>
+
+<% @posts.where.not(:user_id => current_user.id).sample(1).each do |post| %>
 <div class="options">
 
   <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
@@ -32,3 +34,5 @@
 </div>
 
 </div>
+
+(current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
