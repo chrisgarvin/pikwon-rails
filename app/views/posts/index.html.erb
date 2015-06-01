@@ -6,7 +6,7 @@
   <span class ="character">k</span>
 </div>
 
-<%-# Finding all posts that were not created by current_user -%>
+<%-# Finding all posts that were not created by current_user if current_user exists -%>
 
 <% if current_user %>
 
@@ -28,6 +28,8 @@
 </div>
 
 <% end %>
+
+<%-# else finds all posts -%>
 
 <% else %>
 

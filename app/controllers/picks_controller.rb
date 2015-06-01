@@ -1,6 +1,6 @@
 class PicksController < ApplicationController
   before_action :require_user
-  
+
   def index
   end
 
@@ -13,13 +13,24 @@ class PicksController < ApplicationController
 
   def update
   end
+
   def like
+
     @option = Option.find(params[:id].to_i)
-    @pick = Pick.create(:user_id => current_user.id, :option_id => @option.id,
-    :post_id => params[:post].to_i)
-    @option.option_picks +=1
-    @option.save
-    redirect_to "/"
+
+# check to see if current_user has already voted on particular post, only allow
+# one vote
+
+    if current_user.picks.where(:option_id => @option.id).count == 0
+      @pick = Pick.create(:user_id => current_user.id, :option_id => @option.id,
+      :post_id => params[:post].to_i)
+      @option.option_picks +=1
+      @option.save
+      redirect_to "/"
+    else
+
+      redirect_to(posts_path)
+    end
   end
 
 end
