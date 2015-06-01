@@ -15,6 +15,6 @@ end
 # before_filter :require_user
 
 def require_user
-redirect_to '/login' unless current_user
+redirect_to '/signup' unless current_user
 end
 end

@@ -8,6 +8,8 @@
 
 <%-# Finding all posts that were not created by current_user -%>
 
+<% if current_user %>
+
 <% @posts.where.not(:user_id => current_user.id).sample(1).each do |post| %>
 <div class="options">
 
@@ -27,6 +29,28 @@
 
 <% end %>
 
+<% else %>
+
+<% @posts.all.sample(1).each do |post| %>
+<div class="options">
+
+  <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
+  :post => post.id) %>
+
+</div>
+<span class="new">
+  <%= link_to "NEW", new_post_path %>
+</span>
+<div class="options">
+
+  <%= link_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
+  :post => post.id) %>
+
+</div>
+
+<% end %>
+<% end %>
+
 <div class="logo">
   <span class ="character">w</span>
   <span class ="character">o</span>
@@ -34,5 +58,3 @@
 </div>
 
 </div>
-
-(current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
