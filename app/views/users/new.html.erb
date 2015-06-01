@@ -6,7 +6,7 @@
      <%= f.text_field :fname, :placeholder => "First name" %><br>
      <%= f.text_field :lname, :placeholder => "Last name" %><br>
      <%= f.email_field :email, :placeholder => "Email" %><br>
-     <%= f.text_field :handle, :placeholder => "Username" %><br>
+     <%= f.text_field :handle.downcase, :placeholder => "Username" %><br>
      <%= f.password_field :password, :placeholder => "Password" %><br>
      <%= f.submit "Create an account", class: "btn-submit" %>
    <% end %>
