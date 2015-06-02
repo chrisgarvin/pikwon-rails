@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+initialPost = Post.new
+
+initialOption1 = Option.create(:option_text => "Make a Pik")
+
+initialPost.options << initialOption1
+
+
+initialOption2 = Option.create(:option_text => "Don't make a Pik")
+
+initialPost.options << initialOption2
+
+initialPost.save

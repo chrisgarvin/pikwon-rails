@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150601033618) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "options", force: :cascade do |t|
     t.string   "option_text"
     t.datetime "created_at",               null: false
@@ -33,9 +36,9 @@ ActiveRecord::Schema.define(version: 20150601033618) do
     t.integer  "post_id"
   end
 
-  add_index "picks", ["option_id"], name: "index_picks_on_option_id"
-  add_index "picks", ["post_id"], name: "index_picks_on_post_id"
-  add_index "picks", ["user_id"], name: "index_picks_on_user_id"
+  add_index "picks", ["option_id"], name: "index_picks_on_option_id", using: :btree
+  add_index "picks", ["post_id"], name: "index_picks_on_post_id", using: :btree
+  add_index "picks", ["user_id"], name: "index_picks_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150601033618) do
     t.integer  "user_id"
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "handle"
@@ -56,4 +59,8 @@ ActiveRecord::Schema.define(version: 20150601033618) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "picks", "options"
+  add_foreign_key "picks", "posts"
+  add_foreign_key "picks", "users"
+  add_foreign_key "posts", "users"
 end

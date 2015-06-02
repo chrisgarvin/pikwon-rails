@@ -19,11 +19,13 @@
 
   <div class="profile_options">
   <%= post.options.first.option_text.upcase %>
-  <span class="likes">LIKES: <%= post.options.first.option_picks %></span>
+  <span class="likes"><%= percentage(post.options.first.option_picks.to_i, post.options.second.option_picks.to_i) %>
+    %</span>
   </div>
   <div class="profile_options">
     <%= post.options.second.option_text.upcase %>
-    <span class="likes">LIKES: <%= post.options.second.option_picks %></span>
+    <span class="likes"><%= percentage(post.options.second.option_picks.to_i, post.options.first.option_picks.to_i) %>
+      %</span>
   </div>
   POSTED ON: <%= post.created_at.utc.strftime("%D") %>
 </div>
