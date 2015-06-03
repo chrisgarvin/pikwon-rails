@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+initialUser = User.create(:handle => "admin", :fname => "admin", :lname => "admin",
+:email => "admin", :password => "admin", :password_confirmation => "admin")
+
 initialPost = Post.new
 
 initialOption1 = Option.create(:option_text => "Make a Pik")
@@ -17,4 +20,8 @@ initialOption2 = Option.create(:option_text => "Don't make a Pik")
 
 initialPost.options << initialOption2
 
+initialUser.posts << initialPost
+
 initialPost.save
+
+initialUser.save

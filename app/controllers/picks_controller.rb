@@ -33,4 +33,8 @@ class PicksController < ApplicationController
     end
   end
 
+  def liked?
+    
+  end
+
 end

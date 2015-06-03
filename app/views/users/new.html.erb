@@ -8,6 +8,7 @@
      <%= f.email_field :email, :placeholder => "Email" %><br>
      <%= f.text_field :handle.downcase, :placeholder => "Username" %><br>
      <%= f.password_field :password, :placeholder => "Password" %><br>
+     <%= f.password_field :password_confirmation, :placeholder => "Verify Password" %><br>
      <%= f.submit "Create an account", class: "btn-submit" %>
    <% end %>
    <%= link_to "BACK", "/" %>
