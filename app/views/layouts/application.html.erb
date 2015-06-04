@@ -11,7 +11,10 @@
   <header class="logout">
   <% if current_user %>
 <ul>
-  <li><%= link_to current_user.handle.upcase, "/users/show" %></li>
+  <li><%= link_to current_user.handle.upcase, "/users/show" %> |</li>
+  <li>
+    <%= link_to "NEW", new_post_path %> |
+  </li>
   <li><%= link_to "Log out".upcase, logout_path, method: "delete" %></li>
 </ul>
 <% else %>
