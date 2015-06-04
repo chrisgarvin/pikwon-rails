@@ -44,7 +44,22 @@ class PostsController < ApplicationController
 
 
   end
-  
+
+  def destroy
+    @post = Post.find(params[:id])
+    @option1picks = @post.options.second.picks
+    @option2picks = @post.options.first.picks
+    @option1 = @post.options.first
+    @option2 = @post.options.second
+    @option1picks.destroy
+    @option2picks.destroy
+    @option1.destroy
+    @option2.destroy
+    @post.destroy
+
+    redirect_to users_show_path
+  end
+
 
   private
 

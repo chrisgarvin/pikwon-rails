@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "posts/new" => "posts#new", as: :new_post
   get "posts/:id" => "posts#show", as: :post
   post "posts/new" => "posts#create"
+  delete "posts/:id" => "posts#destroy"
 
   get "signup/" => "users#new"
   post "users/" => "users#create"
