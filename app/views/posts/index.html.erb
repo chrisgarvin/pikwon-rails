@@ -34,27 +34,34 @@
   </div>
 
   <% else %>
-
-<div class="options">
-  <span class="test_likes">
+<div class="options_container">
+  <div class="test_likes">
     <%= post.options.first.option_picks %>
-  </span>
+  </div>
+<div class="options">
 
   <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
   :post => post.id) %>
 
 </div>
+<div class="test_likes">
+</div>
+</div>
 <span class="new">
   POSTED BY: <%= User.find(post.user_id).handle.upcase %>
 </span>
-<div class="options">
-  <span class="test_likes">
+<div class="options_container">
+  <div class="test_likes">
     <%= post.options.second.option_picks %>
-  </span>
+  </div>
+<div class="options">
 
   <%= link_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
   :post => post.id) %>
 
+</div>
+<div class="test_likes">
+</div>
 </div>
 
 <% end %>
@@ -95,16 +102,19 @@
 
 <script>
 
-var optionOne = document.getElementsByClassName("options")[0]
-var optionTwo = document.getElementsByClassName("options")[1]
+var optionOne = document.getElementsByClassName("options_container")[0]
+var optionTwo = document.getElementsByClassName("options_container")[1]
+var optionOneLink = document.getElementsByClassName("options")[0]
+var optionTwoLink = document.getElementsByClassName("options")[1]
 var clicked = false;
+
 
 function showPercentages(a, b){
 if(!clicked){
 return function() {
   clicked = true;
   var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
-  var second = parseInt(document.getElementsByClassName("test_likes")[1].innerHTML) + a;
+  var second = parseInt(document.getElementsByClassName("test_likes")[2].innerHTML) + a;
 
   console.log(first)
   console.log(second)
@@ -115,6 +125,7 @@ return function() {
   console.log(percentageTop)
   console.log(percentageBottom)
 
+
   optionOne.className + " testClass"
   optionTwo.className + " testClass"
 
@@ -124,12 +135,21 @@ return function() {
   optionTwo.style.background = "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) "
    + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
    optionTwo.style.transition = "all .75s ease";
+
+   document.getElementsByClassName("test_likes")[0].innerHTML = percentageTop + "%"
+   document.getElementsByClassName("test_likes")[2].innerHTML = percentageBottom + "%"
+
+   document.getElementsByClassName("test_likes")[0].style.display = "block";
+   document.getElementsByClassName("test_likes")[1].style.display = "block";
+   document.getElementsByClassName("test_likes")[2].style.display = "block";
+   document.getElementsByClassName("test_likes")[3].style.display = "block";
+
 }
 }
 }
 
-optionOne.addEventListener("click", showPercentages(0,1))
-optionTwo.addEventListener("click", showPercentages(1,0))
+optionOneLink.addEventListener("click", showPercentages(0,1))
+optionTwoLink.addEventListener("click", showPercentages(1,0))
 
 
 </script>
