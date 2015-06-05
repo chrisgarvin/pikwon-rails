@@ -19,19 +19,27 @@
   <% controller.redirect_to posts_path %>
 
   <% elsif current_user.picks.count >= @posts.where.not(:user_id => current_user.id).count %>
+  <div class="options_container">
+
   <div class="options">
 
     YOU'VE REACHED THE END.
 
   </div>
+</div>
+
+
   <span class="new">
     <%= link_to "NEW", new_post_path %>
   </span>
+  <div class="options_container">
+
   <div class="options">
 
     COME BACK LATER!
 
   </div>
+</div>
 
   <% else %>
 <div class="options_container">
@@ -73,20 +81,26 @@
 <% else %>
 
 <% @posts.all.sample(1).each do |post| %>
+<div class="options_container">
+
 <div class="options">
 
   <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
   :post => post.id) %>
 
 </div>
+</div>
 <span class="new">
   POSTED BY: <%= User.find(post.user_id).handle.upcase %>
 </span>
+<div class="options_container">
+
 <div class="options">
 
   <%= link_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
   :post => post.id) %>
 
+</div>
 </div>
 
 <% end %>
@@ -98,6 +112,7 @@
   <span class ="character">n</span>
 </div>
 
+</div>
 </div>
 
 <script>
