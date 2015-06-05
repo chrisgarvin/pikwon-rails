@@ -16,7 +16,6 @@ html,body {
   height: 100%;
   font-size: 10px;
   font-family: 'Raleway', sans-serif;
-  min-height: 600px;
 }
 a {
   text-decoration: none;
@@ -76,8 +75,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: inherit;
-  min-height: 475px;
+  height: inherit;;
   text-align: center;
   flex-wrap: nowrap;
   align-content: center;
@@ -94,6 +92,7 @@ footer {
   -webkit-align-items: center;
   width: 100%;
   height: 18%;
+  min-height: 85px;
   border-radius: 5px;
   // border: solid black 1px;
   margin: 10px auto;
