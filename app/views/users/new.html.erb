@@ -3,13 +3,14 @@
 <h1 class="header">SIGN-UP</h1>
 
    <%= form_for(@user) do |f| %>
-     <%= f.text_field :fname, :placeholder => "First name" %><br>
-     <%= f.text_field :lname, :placeholder => "Last name" %><br>
-     <%= f.email_field :email, :placeholder => "Email" %><br>
-     <%= f.text_field :handle.downcase, :placeholder => "Username" %><br>
-     <%= f.password_field :password, :placeholder => "Password" %><br>
-     <%= f.password_field :password_confirmation, :placeholder => "Verify Password" %><br>
-     <%= f.submit "Create an account", class: "btn-submit" %>
+     <%= f.text_field :fname, :placeholder => "FIRST NAME" %><br>
+     <%= f.text_field :lname, :placeholder => "LAST NAME" %><br>
+     <%= f.email_field :email, :placeholder => "EMAIL" %><br>
+     <%= f.text_field :handle.downcase, :placeholder => "USERNAME" %><br>
+     <%= f.password_field :password, :placeholder => "PASSWORD" %><br>
+     <%= f.password_field :password_confirmation, :placeholder => "VERIFY PASSWORD" %><br><br>
+     <%= f.submit "GET PIK'IN.", class: "btn-submit" %>
    <% end %>
+   <br>
    <%= link_to "BACK", "/" %>
  </div>

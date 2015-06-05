@@ -29,10 +29,6 @@ data: { confirm: "Are you sure you want to delete this post?"} %>
   <span class="likes"><%= percentage(post.options.first.option_picks.to_i, post.options.second.option_picks.to_i) %>
   %</span>
   </div>
-  <div class="percent_bar">
-
-
-  </div>
   <div class="profile_options">
     <%= post.options.second.option_text.upcase %>
     <span class="likes"><%= percentage(post.options.second.option_picks.to_i, post.options.first.option_picks.to_i) %>
@@ -51,10 +47,14 @@ var count = <%= current_user.posts.count * 2 %>
 for(var i = 0, j = 0; i < count; i+=2, j++){
 
   var first = document.getElementsByClassName("likes")[i].innerHTML.toString()
+  var second = document.getElementsByClassName("likes")[i+1].innerHTML.toString()
 
-  document.getElementsByClassName("percent_bar")[j].style.background =
+  document.getElementsByClassName("profile_options")[i].style.background =
   "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) " + parseInt(first)
-   + "%, #25acb6 " + parseInt(first) + "%, #25acb6 100%)";
+   + "%, #3dd9da " + parseInt(first) + "%, #3dd9da 100%)";
+   document.getElementsByClassName("profile_options")[i+1].style.background =
+   "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) " + parseInt(second)
+    + "%, #3dd9da " + parseInt(second) + "%, #3dd9da 100%)";
 
   var test = document.getElementsByClassName("post_history")[j];
 
