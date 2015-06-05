@@ -34,7 +34,11 @@
   </div>
 
   <% else %>
+
 <div class="options">
+  <span class="test_likes">
+    <%= post.options.first.option_picks %>
+  </span>
 
   <%= link_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
   :post => post.id) %>
@@ -44,6 +48,9 @@
   POSTED BY: <%= User.find(post.user_id).handle.upcase %>
 </span>
 <div class="options">
+  <span class="test_likes">
+    <%= post.options.second.option_picks %>
+  </span>
 
   <%= link_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
   :post => post.id) %>
@@ -85,3 +92,41 @@
 </div>
 
 </div>
+
+<script>
+
+var optionOne = document.getElementsByClassName("options")[0]
+var optionTwo = document.getElementsByClassName("options")[1]
+
+function showPercentages(a, b){
+
+return function() {
+  var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
+  var second = parseInt(document.getElementsByClassName("test_likes")[1].innerHTML) + a;
+
+  console.log(first)
+  console.log(second)
+
+  var percentageTop = Math.round((parseInt(first) / (parseInt(first) + parseInt(second))) * 100)
+  var percentageBottom = Math.round((parseInt(second) / (parseInt(second) + parseInt(first))) * 100)
+
+  console.log(percentageTop)
+  console.log(percentageBottom)
+
+  optionOne.className + " testClass"
+  optionTwo.className + " testClass"
+
+  optionOne.style.background = "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) "
+   + parseInt(percentageTop) + "%, #25acb6 " + parseInt(percentageTop) + "%, #25acb6 100%)";
+   optionOne.style.transition = "all .75s ease";
+  optionTwo.style.background = "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) "
+   + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
+   optionTwo.style.transition = "all .75s ease";
+}
+}
+
+optionOne.addEventListener("click", showPercentages(0,1))
+optionTwo.addEventListener("click", showPercentages(1,0))
+
+
+</script>

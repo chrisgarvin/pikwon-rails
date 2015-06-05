@@ -26,6 +26,7 @@ class PicksController < ApplicationController
       :post_id => params[:post].to_i)
       @option.option_picks +=1
       @option.save
+      sleep 1.5
       redirect_to "/"
     else
 
@@ -34,7 +35,7 @@ class PicksController < ApplicationController
   end
 
   def liked?
-    
+
   end
 
 end
