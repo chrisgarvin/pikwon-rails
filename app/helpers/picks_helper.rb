@@ -12,7 +12,7 @@ module PicksHelper
       total = num1 + num2
       total = num1.to_f / total
       total = total * 100
-      total.round
+      total.round(1)
     end
   end
 end

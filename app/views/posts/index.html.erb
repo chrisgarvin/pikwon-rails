@@ -97,10 +97,12 @@
 
 var optionOne = document.getElementsByClassName("options")[0]
 var optionTwo = document.getElementsByClassName("options")[1]
+var clicked = false;
 
 function showPercentages(a, b){
-
+if(!clicked){
 return function() {
+  clicked = true;
   var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
   var second = parseInt(document.getElementsByClassName("test_likes")[1].innerHTML) + a;
 
@@ -122,6 +124,7 @@ return function() {
   optionTwo.style.background = "linear-gradient(to right, rgb(74, 77, 77) 0%, rgb(74, 77, 77) "
    + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
    optionTwo.style.transition = "all .75s ease";
+}
 }
 }
 
