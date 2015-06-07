@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'picks/' => "picks#like"
+  post 'picks/' => "picks#like"
 
   get 'picks/new'
 
