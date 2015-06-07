@@ -10,38 +10,50 @@
 
 <% if current_user %>
 
-<% @posts.where.not(:user_id => current_user.id).sample(1).each do |post| %>
+<% @available_posts = []
 
-<% if (current_user.picks.where(:option_id => post.options.first.id).count > 0 or
-  current_user.picks.where(:option_id => post.options.second.id).count > 0) and
-  current_user.picks.count < @posts.where.not(:user_id => current_user.id).count %>
+@posts.each do |post|
 
-  <% controller.redirect_to posts_path %>
+  if post.user_id == current_user.id or
+    current_user.picks.where(:option_id => post.options.first.id).count > 0 or
+    current_user.picks.where(:option_id => post.options.second.id).count > 0
+  else
+    @available_posts << post
+  end
+end
 
-  <% elsif current_user.picks.count >= @posts.where.not(:user_id => current_user.id).count %>
-  <div class="options_container">
+    %>
 
-  <div class="options">
+    <%= @available_posts.count %>
 
-    YOU'VE REACHED THE END.
+<% if @available_posts.count == 0 %>
 
-  </div>
+<div class="options_container">
+
+<div class="options">
+
+  YOU'VE REACHED THE END.
+
+</div>
 </div>
 
 
-  <span class="new">
-    <%= link_to "NEW", new_post_path %>
-  </span>
-  <div class="options_container">
+<span class="new">
+  <%= link_to "NEW", new_post_path %>
+</span>
+<div class="options_container">
 
-  <div class="options">
+<div class="options">
 
-    COME BACK LATER!
+  COME BACK LATER!
 
-  </div>
+</div>
 </div>
 
-  <% else %>
+<% else %>
+
+<% @available_posts.sample(1).each do |post| %>
+
 <div class="options_container">
   <div class="test_likes">
     <%= post.options.first.option_picks %>
@@ -72,11 +84,11 @@
 </div>
 </div>
 
-<% end %>
 
 <% end %>
 
 <%-# else finds all posts -%>
+<% end %>
 
 <% else %>
 
