@@ -192,8 +192,16 @@ header a:hover {
   text-align: left;
   font-size: 15px;
 }
+.profile h1 {
+  font-size: 4vw;
+}
+.post_history_container {
+  width: 100%;
+  margin: 0 auto;
+}
 .post_history {
-  width: 33%;
+  margin: 0 auto;
+  width: 32.9%;
   display: inline-block;
   text-align: center;
   font-size: .7vw;
