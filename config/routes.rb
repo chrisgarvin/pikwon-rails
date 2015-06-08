@@ -3,21 +3,16 @@ Rails.application.routes.draw do
   get 'picks/' => "picks#like"
   post 'picks/' => "picks#like"
 
-  get 'picks/new'
-
-  get 'picks/show'
-
   get 'options/' => "posts#index"
-
-  get 'options/new' => "posts#new"
-
   post 'options/new' => "posts#create"
 
   get 'users/index'
 
   get "users/new" => "users#new", as: :new_user
-  # get "users/:id" => "users#show", as: :user
-  get "users/show"
+  get "users/:id" => "users#show", as: :user
+  post "users/" => "users#create"
+  get "users/:id/edit" => "users#edit", as: :edit_user
+  patch "users/:id" => "users#update"
 
   get "posts/" => "posts#index"
   get "posts/new" => "posts#new", as: :new_post
@@ -26,8 +21,6 @@ Rails.application.routes.draw do
   delete "posts/:id" => "posts#destroy"
 
   get "signup/" => "users#new"
-  post "users/" => "users#create"
-
   get "login/" => "sessions#new"
   post "login/" => "sessions#create"
   delete "logout/" => "sessions#destroy"

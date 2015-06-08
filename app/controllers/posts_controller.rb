@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  #requre a user being logged in to create a post
+
   before_action :require_user, only: [:new, :create]
 
   def index
@@ -22,28 +25,45 @@ class PostsController < ApplicationController
 
   def create
 
+#create new post object
+
     @post = Post.new
 
-    @option = Option.new(:option_text => params[:test][:option_text_one])
+#check to see if options input are duplicates, render new if so to prevent duplicates
 
-    @post.options << @option
+    if params[:test][:option_text_one].strip == params[:test][:option_text_two].strip
 
-
-    @option = Option.new(:option_text => params[:test][:option_text_two])
-
-    @post.options << @option
-
-    @post.user_id = current_user.id
-
-    if @option.save
-      @post.save
-      redirect_to posts_path
-    else
       render :new
+
+#else create post with options
+
+    else
+
+#create option and shovel option into post, do this twice with both options
+
+      @option = Option.new(:option_text => params[:test][:option_text_one])
+
+      @post.options << @option
+
+      @option = Option.new(:option_text => params[:test][:option_text_two])
+
+      @post.options << @option
+
+      @post.user_id = current_user.id
+
+#if post is saved with no errors, redirect to posts, else render new
+
+      if @option.save
+        @post.save
+        redirect_to posts_path
+      else
+        render :new
+      end
     end
 
-
   end
+
+#destroy post and all picks/options associated with it, and redirect to user profile
 
   def destroy
     @post = Post.find(params[:id])
@@ -57,9 +77,10 @@ class PostsController < ApplicationController
     @option2.destroy
     @post.destroy
 
-    redirect_to users_show_path
+    redirect_to user_path
   end
 
+#create option/post params
 
   private
 

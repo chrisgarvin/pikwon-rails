@@ -1,128 +1,138 @@
 <div class="container">
 
-<div class="logo">
-  <span class ="character">p</span>
-  <span class ="character">i</span>
-  <span class ="character">k</span>
-</div>
+  <div class="logo">
+    <span class ="character">p</span>
+    <span class ="character">i</span>
+    <span class ="character">k</span>
+  </div>
 
-<%-# Finding all posts that were not created by current_user if current_user exists -%>
+<!-- checks to see if current_user exists -->
 
 <% if current_user %>
 
-<% @available_posts = []
+<!-- Finding all posts that were not created by current_user if current_user exists
+and posts current_user hasnt picked on, and places those in available_posts
+in order to be iterated through  -->
 
-@posts.each do |post|
+  <% @available_posts = []
 
-  if post.user_id == current_user.id or
-    current_user.picks.where(:option_id => post.options.first.id).count > 0 or
-    current_user.picks.where(:option_id => post.options.second.id).count > 0
-  else
-    @available_posts << post
+  @posts.each do |post|
+
+    if post.user_id == current_user.id or
+      current_user.picks.where(:option_id => post.options.first.id).count > 0 or
+      current_user.picks.where(:option_id => post.options.second.id).count > 0
+    else
+      @available_posts << post
+    end
   end
-end
 
-    %>
+  %>
 
-<% if @available_posts.count == 0 %>
+<!-- if available_posts count == 0, lets user know they've reached the end -->
 
-<div class="options_container">
+  <% if @available_posts.count == 0 %>
 
-<div class="options">
+  <div class="options_container">
 
-  YOU'VE REACHED THE END.
+    <div class="options">
 
-</div>
-</div>
+    YOU'VE REACHED THE END.
+
+    </div>
+  </div>
 
 
-<span class="new">
-  <%= link_to "NEW", new_post_path %>
-</span>
-<div class="options_container">
+  <span class="new">
+    <%= link_to "NEW", new_post_path %>
+  </span>
+  <div class="options_container">
 
-<div class="options">
+    <div class="options">
 
-  COME BACK LATER!
+      COME BACK LATER!
 
-</div>
-</div>
+    </div>
+  </div>
+
+<!-- else it iterates randomly through available_posts allowing user to pick which
+option they'd prefer -->
+
+  <% else %>
+
+    <% @available_posts.sample(1).each do |post| %>
+
+  <div class="options_container">
+    <div class="test_likes">
+      <%= post.options.first.option_picks %>
+    </div>
+    <div class="options">
+
+      <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
+      :post => post.id) %>
+
+    </div>
+    <div class="test_likes">
+    </div>
+  </div>
+  <span class="new">
+    POSTED BY: <%= User.find(post.user_id).handle.upcase %>
+  </span>
+  <div class="options_container">
+    <div class="test_likes">
+      <%= post.options.second.option_picks %>
+    </div>
+    <div class="options">
+
+      <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
+      :post => post.id) %>
+
+    </div>
+    <div class="test_likes">
+    </div>
+  </div>
+
+
+  <% end %>
+
+
+<% end %>
+
+<!-- else current_user doesn't exist and loads random post which directs to signup -->
 
 <% else %>
 
-<% @available_posts.sample(1).each do |post| %>
+  <% @posts.all.sample(1).each do |post| %>
+  <div class="options_container">
 
-<div class="options_container">
-  <div class="test_likes">
-    <%= post.options.first.option_picks %>
+    <div class="options">
+
+      <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
+      :post => post.id) %>
+
+    </div>
   </div>
-<div class="options">
+  <span class="new">
+    POSTED BY: <%= User.find(post.user_id).handle.upcase %>
+  </span>
+  <div class="options_container">
 
-  <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
-  :post => post.id) %>
+    <div class="options">
 
-</div>
-<div class="test_likes">
-</div>
-</div>
-<span class="new">
-  POSTED BY: <%= User.find(post.user_id).handle.upcase %>
-</span>
-<div class="options_container">
-  <div class="test_likes">
-    <%= post.options.second.option_picks %>
+      <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
+      :post => post.id) %>
+
+    </div>
   </div>
-<div class="options">
 
-  <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
-  :post => post.id) %>
-
-</div>
-<div class="test_likes">
-</div>
-</div>
-
-
+  <% end %>
 <% end %>
 
-<%-# else finds all posts -%>
-<% end %>
+  <div class="logo">
+    <span class ="character">w</span>
+    <span class ="character">o</span>
+    <span class ="character">n</span>
+  </div>
 
-<% else %>
-
-<% @posts.all.sample(1).each do |post| %>
-<div class="options_container">
-
-<div class="options">
-
-  <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
-  :post => post.id) %>
-
-</div>
-</div>
-<span class="new">
-  POSTED BY: <%= User.find(post.user_id).handle.upcase %>
-</span>
-<div class="options_container">
-
-<div class="options">
-
-  <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
-  :post => post.id) %>
-
-</div>
-</div>
-
-<% end %>
-<% end %>
-
-<div class="logo">
-  <span class ="character">w</span>
-  <span class ="character">o</span>
-  <span class ="character">n</span>
-</div>
-
-</div>
 </div>
 
 <script>
@@ -133,45 +143,65 @@ var optionOneLink = document.getElementsByClassName("options")[0]
 var optionTwoLink = document.getElementsByClassName("options")[1]
 var clicked = false;
 
+// showPercentages function in order to add animation to user click and display
+// current statistics on post picks
 
 function showPercentages(a, b){
-if(!clicked){
-return function() {
-  clicked = true;
-  var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
-  var second = parseInt(document.getElementsByClassName("test_likes")[2].innerHTML) + a;
 
-  console.log(first)
-  console.log(second)
+// checks to make sure element hasn't been clicked yet do prevent multiple clicks
 
-  var percentageTop = Math.round((parseInt(first) / (parseInt(first) + parseInt(second))) * 100)
-  var percentageBottom = Math.round((parseInt(second) / (parseInt(second) + parseInt(first))) * 100)
+  if(!clicked){
+    return function() {
+      clicked = true;
 
-  console.log(percentageTop)
-  console.log(percentageBottom)
+// sets initial values to pick value, mimicing the users pick by adding 1 to the
+// value of the element they chose in order to display proper percentages
 
+      var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
+      var second = parseInt(document.getElementsByClassName("test_likes")[2].innerHTML) + a;
 
-  optionOne.className + " testClass"
-  optionTwo.className + " testClass"
+      console.log(first)
+      console.log(second)
 
-  optionOne.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
-   + parseInt(percentageTop) + "%, #25acb6 " + parseInt(percentageTop) + "%, #25acb6 100%)";
-   optionOne.style.transition = "all .75s ease";
-  optionTwo.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
-   + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
-   optionTwo.style.transition = "all .75s ease";
+// takes the percentage of the first options picks and second options picks
 
-   document.getElementsByClassName("test_likes")[0].innerHTML = percentageTop + "%"
-   document.getElementsByClassName("test_likes")[2].innerHTML = percentageBottom + "%"
+      var percentageTop = Math.round((parseInt(first) / (parseInt(first) + parseInt(second))) * 100)
+      var percentageBottom = Math.round((parseInt(second) / (parseInt(second) + parseInt(first))) * 100)
 
-   document.getElementsByClassName("test_likes")[0].style.display = "block";
-   document.getElementsByClassName("test_likes")[1].style.display = "block";
-   document.getElementsByClassName("test_likes")[2].style.display = "block";
-   document.getElementsByClassName("test_likes")[3].style.display = "block";
+      console.log(percentageTop)
+      console.log(percentageBottom)
 
+// adds a class to the options that allow for display transition properties
+
+      optionOne.className + " testClass"
+      optionTwo.className + " testClass"
+
+// changes each options background to a gradient based on the percentage of picks
+// chosen for each particular option, and sets a transition for animation effect
+
+      optionOne.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
+       + parseInt(percentageTop) + "%, #25acb6 " + parseInt(percentageTop) + "%, #25acb6 100%)";
+       optionOne.style.transition = "all .75s ease";
+      optionTwo.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
+       + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
+       optionTwo.style.transition = "all .75s ease";
+
+// adds percentage value to be displayed
+
+       document.getElementsByClassName("test_likes")[0].innerHTML = percentageTop + "%"
+       document.getElementsByClassName("test_likes")[2].innerHTML = percentageBottom + "%"
+
+       document.getElementsByClassName("test_likes")[0].style.display = "block";
+       document.getElementsByClassName("test_likes")[1].style.display = "block";
+       document.getElementsByClassName("test_likes")[2].style.display = "block";
+       document.getElementsByClassName("test_likes")[3].style.display = "block";
+
+    }
+  }
 }
-}
-}
+
+// adds event listeners to desired elements, passing in values that will be returned
+// in showPercentages function
 
 optionOneLink.addEventListener("click", showPercentages(0,1))
 optionTwoLink.addEventListener("click", showPercentages(1,0))

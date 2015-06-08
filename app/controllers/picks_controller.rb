@@ -19,7 +19,7 @@ class PicksController < ApplicationController
     @option = Option.find(params[:id].to_i)
 
 # check to see if current_user has already voted on particular post, only allow
-# one vote
+# one vote on each post
 
     if current_user.picks.where(:option_id => @option.id).count == 0
       @pick = Pick.create(:user_id => current_user.id, :option_id => @option.id,

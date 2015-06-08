@@ -1,0 +1,14 @@
+<div class="container profile">
+
+  <h1 class="header">EDIT DETAILS</h1>
+
+  <%= form_for(@user) do |f| %>
+    <%= f.text_field :fname, :placeholder => "FIRST NAME" %><br>
+    <%= f.text_field :lname, :placeholder => "LAST NAME" %><br>
+    <%= f.email_field :email, :placeholder => "EMAIL" %><br>
+    <%= f.text_field :handle.downcase, :placeholder => "USERNAME" %><br><br>
+    <%= f.submit "CONFIRM CHANGES.", class: "btn-submit", data: { confirm: "Are you sure you want to make this change?"} %>
+  <% end %>
+  <br>
+  <%= link_to "BACK", user_path %>
+  </div>
