@@ -23,15 +23,17 @@ class PicksController < ApplicationController
 
     if current_user.picks.where(:option_id => @option.id).count == 0
       @pick = Pick.create(:user_id => current_user.id, :option_id => @option.id,
-      :post_id => params[:post].to_i)
-      @option.option_picks +=1
-      @option.save
-      sleep 1.5
-      redirect_to "/"
+      :post_id => params[:post].to_i, :skip => params[:skip])
+      if @pick.skip == false
+        @option.option_picks +=1
+        @option.save
+        sleep 1.2
+        redirect_to "/"
     else
 
       redirect_to(posts_path)
     end
   end
+end
 
 end

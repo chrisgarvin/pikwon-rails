@@ -106,12 +106,14 @@ footer {
   align-items: center;
   color: #f6f7fa;
   background-position: -1000px, 0;
+  // background: linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92)50%, #25acb6 74%, #25acb6 100%);
 }
 .test_likes {
   display: none;
   color: $primary_color;
   font-size: 1.5vw;
   width: 5%;
+  background: rgba(0,0,0,0);
 }
 .options {
   width: 90%;
@@ -241,12 +243,6 @@ header a:hover {
   display: block;
   font-size: .8vw;
 }
-.percent_bar {
-  height: 5px;
-  margin: 0;
-  width: 100%;
-  border-radius: 5px;
-}
 .delete {
   text-align: center;
   display: none;
@@ -271,33 +267,6 @@ header a:hover {
   border: none;
   outline: none;
   font-family: 'Raleway', sans-serif;
-}
-.options_container {
-  display: -webkit-flex;
-  -webkit-flex-direction: row;
-  -webkit-justify-content: center;
-  -webkit-text-align: center;
-  -webkit-flex-wrap: nowrap;
-  -webkit-align-content: center;
-  -webkit-align-items: center;
-  width: 100%;
-  height: 18%;
-  min-height: 85px;
-  border-radius: 5px;
-  font-size: 6vw;
-  margin: 10px auto;
-  text-align: center;
-  font-weight: bolder;
-  background-color: $primary_color;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  flex-wrap: nowrap;
-  align-content: center;
-  align-items: center;
-  color: #f6f7fa;
-  background-position: -1000px, 0;
 }
 .delete_container {
   display: block;

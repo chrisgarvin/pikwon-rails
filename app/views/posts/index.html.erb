@@ -68,14 +68,16 @@ option they'd prefer -->
     <div class="options">
 
       <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
-      :post => post.id) %>
+      :post => post.id, :skip => false) %>
 
     </div>
     <div class="test_likes">
     </div>
   </div>
   <span class="new">
-    POSTED BY: <%= User.find(post.user_id).handle.upcase %>
+    POSTED BY: <%= User.find(post.user_id).handle.upcase %> <%= link_to "SKIP",
+    picks_path(:id => post.options.first.id,
+    :post => post.id, :skip => true) %>
   </span>
   <div class="options_container">
     <div class="test_likes">
@@ -84,7 +86,7 @@ option they'd prefer -->
     <div class="options">
 
       <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
-      :post => post.id) %>
+      :post => post.id, :skip => false) %>
 
     </div>
     <div class="test_likes">
@@ -137,10 +139,10 @@ option they'd prefer -->
 
 <script>
 
-var optionOne = document.getElementsByClassName("options_container")[0]
-var optionTwo = document.getElementsByClassName("options_container")[1]
-var optionOneLink = document.getElementsByClassName("options")[0]
-var optionTwoLink = document.getElementsByClassName("options")[1]
+var optionOne = document.getElementsByClassName("options_container")[0];
+var optionTwo = document.getElementsByClassName("options_container")[1];
+var optionOneLink = document.getElementsByClassName("options")[0];
+var optionTwoLink = document.getElementsByClassName("options")[1];
 var clicked = false;
 
 // showPercentages function in order to add animation to user click and display
@@ -152,7 +154,7 @@ function showPercentages(a, b){
 
   if(!clicked){
     return function() {
-      clicked = true;
+      console.log("hi");
 
 // sets initial values to pick value, mimicing the users pick by adding 1 to the
 // value of the element they chose in order to display proper percentages
@@ -160,41 +162,46 @@ function showPercentages(a, b){
       var first = parseInt(document.getElementsByClassName("test_likes")[0].innerHTML) + b;
       var second = parseInt(document.getElementsByClassName("test_likes")[2].innerHTML) + a;
 
-      console.log(first)
-      console.log(second)
+      // console.log(first)
+      // console.log(second)
 
 // takes the percentage of the first options picks and second options picks
 
-      var percentageTop = Math.round((parseInt(first) / (parseInt(first) + parseInt(second))) * 100)
-      var percentageBottom = Math.round((parseInt(second) / (parseInt(second) + parseInt(first))) * 100)
+      var percentageTop = Math.round((parseInt(first) / (parseInt(first) + parseInt(second))) * 100);
+      var percentageBottom = Math.round((parseInt(second) / (parseInt(second) + parseInt(first))) * 100);
 
-      console.log(percentageTop)
-      console.log(percentageBottom)
+      // console.log(percentageTop)
+      // console.log(percentageBottom)
 
 // adds a class to the options that allow for display transition properties
 
-      optionOne.className + " testClass"
-      optionTwo.className + " testClass"
 
 // changes each options background to a gradient based on the percentage of picks
 // chosen for each particular option, and sets a transition for animation effect
 
       optionOne.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
        + parseInt(percentageTop) + "%, #25acb6 " + parseInt(percentageTop) + "%, #25acb6 100%)";
-       optionOne.style.transition = "all .75s ease";
+       optionOne.style.transition = "background .75s ease";
       optionTwo.style.background = "linear-gradient(to right, rgb(94, 94, 92) 0%, rgb(94, 94, 92) "
        + parseInt(percentageBottom) + "%, #25acb6 " + parseInt(percentageBottom) + "%, #25acb6 100%)";
-       optionTwo.style.transition = "all .75s ease";
+       optionTwo.style.transition = "background .75s ease";
 
 // adds percentage value to be displayed
 
-       document.getElementsByClassName("test_likes")[0].innerHTML = percentageTop + "%"
-       document.getElementsByClassName("test_likes")[2].innerHTML = percentageBottom + "%"
+       document.getElementsByClassName("test_likes")[0].textContent = percentageTop + "%";
+       document.getElementsByClassName("test_likes")[2].textContent = percentageBottom + "%";
+
+       console.log(document.getElementsByClassName("test_likes")[0].innerHTML);
 
        document.getElementsByClassName("test_likes")[0].style.display = "block";
        document.getElementsByClassName("test_likes")[1].style.display = "block";
        document.getElementsByClassName("test_likes")[2].style.display = "block";
        document.getElementsByClassName("test_likes")[3].style.display = "block";
+
+       optionOne.className += " testClass";
+       optionTwo.className += " testClass";
+
+       console.log(optionOne.className);
 
     }
   }
