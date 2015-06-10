@@ -286,6 +286,12 @@ header a:hover {
   padding: 5px;
   text-align: center;
   font-family: 'Raleway', sans-serif;
+  // -webkit-appearance: none;
+}
+.profile input[type=submit] {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 .profile ::-webkit-input-placeholder {
    color: white;
@@ -313,6 +319,23 @@ header a:hover {
 .logout input[type=submit] {
   font-weight: bolder;
   font-size: 10px;
+}
+.skip input[type=submit] {
+  border-radius: 100px;
+  height:45px;
+  width:45px;
+  text-align: center;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  background-color: #FF0000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 8px;
+  -webkit-appearance: none;
 }
 
 // Media query changing style for mobile portrate layout

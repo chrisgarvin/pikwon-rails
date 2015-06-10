@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="logo">
-    <span class ="character">p</span>
-    <span class ="character">i</span>
-    <span class ="character">k</span>
+    <span class ="character"></span>
+    <span class ="character"></span>
+    <span class ="character"></span>
   </div>
 
 <!-- checks to see if current_user exists -->
@@ -75,9 +75,7 @@ option they'd prefer -->
     </div>
   </div>
   <span class="new">
-    POSTED BY: <%= User.find(post.user_id).handle.upcase %> <%= link_to "SKIP",
-    picks_path(:id => post.options.first.id,
-    :post => post.id, :skip => true) %>
+    POSTED BY: <%= User.find(post.user_id).handle.upcase %>
   </span>
   <div class="options_container">
     <div class="test_likes">
@@ -91,6 +89,11 @@ option they'd prefer -->
     </div>
     <div class="test_likes">
     </div>
+  </div>
+  <div class="skip">
+    <%= button_to "SKIP\nWON",
+    picks_path(:id => post.options.first.id,
+    :post => post.id, :skip => true) %>
   </div>
 
 
@@ -130,9 +133,9 @@ option they'd prefer -->
 <% end %>
 
   <div class="logo">
-    <span class ="character">w</span>
-    <span class ="character">o</span>
-    <span class ="character">n</span>
+    <span class ="character"></span>
+    <span class ="character"></span>
+    <span class ="character"></span>
   </div>
 
 </div>
