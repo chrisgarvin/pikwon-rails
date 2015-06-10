@@ -33,7 +33,11 @@ class PicksController < ApplicationController
 
       redirect_to(posts_path)
     end
+
+  else
+
   end
+
 end
 
 end
