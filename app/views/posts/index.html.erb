@@ -19,8 +19,7 @@ in order to be iterated through  -->
   @posts.each do |post|
 
     if post.user_id == current_user.id or
-      current_user.picks.where(:option_id => post.options.first.id).count > 0 or
-      current_user.picks.where(:option_id => post.options.second.id).count > 0
+      current_user.picks.where(:post_id => post.id).count > 0
     else
       @available_posts << post
     end
