@@ -22,7 +22,7 @@
 
     <span class="delete_container">
       <span class="delete">
-    <%= link_to "X", post_path(post.id), method: :delete,
+    <%= link_to "X", post_delete_path(post.id), method: :delete,
   data: { confirm: "Are you sure you want to delete this post?"} %>
       </span>
     </span>

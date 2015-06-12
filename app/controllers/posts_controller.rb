@@ -77,7 +77,7 @@ class PostsController < ApplicationController
     @option2.destroy
     @post.destroy
 
-    redirect_to user_path
+    redirect_to user_path(current_user.id)
   end
 
 #create option/post params
