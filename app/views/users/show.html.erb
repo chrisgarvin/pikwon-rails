@@ -2,22 +2,19 @@
 
 <!-- displays current users profile information if signed in   -->
 
-<% if current_user %>
+<% if current_user == @user %>
   <h1 class="header"><%= @headers.shuffle.first.upcase %> <%= current_user.fname.upcase %>. </h1>
   <h2>username: <%= current_user.handle.upcase %></h2>
   <h2>first name: <%= current_user.fname.upcase %></h2>
   <h2>last name: <%= current_user.lname.upcase %></h2>
   <h2>e-mail: <%= current_user.email.upcase %></h2>
   <h2>member since: <%= current_user.created_at.utc.strftime("%D") %></h2>
-<% else %>
-  <h1>Have you signed up yet?</h1>
-<% end %>
-<%= link_to "BACK", "/" %><%= link_to "EDIT", edit_user_path(current_user) %>
+
+<%= link_to "BACK TO PIK'IN", "/" %><%= link_to "EDIT", edit_user_path(current_user) %>
 </div>
 
 <!-- displays current_user's post history -->
 
-<% if current_user %>
 <div class="post_history_container">
 <% current_user.posts.each do |post| %>
 
@@ -52,6 +49,37 @@
 <% end %>
 </div>
 
+<% else %>
+<h1 class="header"><%= @user.handle.upcase %>'S POSTS.</h1>
+<%= link_to "BACK TO PIK'IN", posts_path %><br>
+<div class="post_history_container">
+<% @user.posts.each do |post| %>
+
+  <div class="post_history" >
+
+    <div class="profile_options">
+    <%= post.options.first.option_text.upcase %>
+
+<!-- uses percentage method created in picks_helper to determine percentage of picks -->
+
+      <span class="likes"><%= percentage(post.options.first.option_picks.to_i, post.options.second.option_picks.to_i) %>
+      %</span>
+    </div>
+    <div class="profile_options">
+      <%= post.options.second.option_text.upcase %>
+
+<!-- uses percentage method created in picks_helper to determine percentage of picks -->
+
+      <span class="likes"><%= percentage(post.options.second.option_picks.to_i, post.options.first.option_picks.to_i) %>
+    % </span>
+    </div>
+    POSTED ON: <%= post.created_at.utc.strftime("%D") %>
+  </div>
+
+<% end %>
+</div>
+
+
 <% end %>
 
 <!-- JS -->
@@ -60,7 +88,7 @@
 
 // initializes count to current users posts * 2
 
-var count = <%= current_user.posts.count * 2 %>
+var count = <%= @user.posts.count * 2 %>
 
 for(var i = 0, j = 0; i < count; i+=2, j++){
 

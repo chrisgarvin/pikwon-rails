@@ -17,6 +17,9 @@ class UsersController < ApplicationController
 #style purposes
 
   def show
+
+    @user = User.find(params[:id])
+    
     @time = Time.new.strftime("%A")
 
     @headers = ["well check you out, ", "oh snap, it's ", "if i had to pikwon i'd pick you, ",

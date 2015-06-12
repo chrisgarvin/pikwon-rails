@@ -12,7 +12,7 @@
   <header class="logout">
   <% if current_user %>
 <ul>
-  <li><%= link_to current_user.handle.upcase, "/users/show" %> <span class="primary">|</span></li>
+  <li><%= link_to current_user.handle.upcase, user_path(:id => current_user.id) %> <span class="primary">|</span></li>
   <li>
     <%= link_to "NEW", new_post_path %> <span class="primary">|</span>
   </li>

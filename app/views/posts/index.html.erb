@@ -74,7 +74,7 @@ option they'd prefer -->
     </div>
   </div>
   <span class="new">
-    POSTED BY: <%= User.find(post.user_id).handle.upcase %>
+    POSTED BY: <%= link_to User.find(post.user_id).handle.upcase, user_path(:id => post.user_id) %>
   </span>
   <div class="options_container">
     <div class="test_likes">
