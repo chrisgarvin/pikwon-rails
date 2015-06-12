@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find(params[:id])
-    
+
     @time = Time.new.strftime("%A")
 
     @headers = ["well check you out, ", "oh snap, it's ", "if i had to pikwon i'd pick you, ",
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to "/users/show"
+      redirect_to user_path(@user.id)
     else
       render :edit
     end
