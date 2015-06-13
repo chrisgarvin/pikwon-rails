@@ -9,6 +9,9 @@
 
 
   <div class="options_new">
+    <span class="character_count">
+      22
+    </span>
     <%= f.text_field :option_text_one, autocomplete: :off %>
   </div>
   <div>
@@ -19,6 +22,9 @@
   </div>
 
   <div class="options_new">
+    <span class="character_count">
+      22
+    </span>
      <%= f.text_field :option_text_two, autocomplete: :off %>
   </div>
 
@@ -29,3 +35,16 @@
     <span class ="character"></span>
   </div>
 </div>
+<script>
+
+var firstOption = document.getElementById('test_option_text_one')
+var secondOption = document.getElementById('test_option_text_two')
+
+firstOption.addEventListener("keyup",function(){
+  document.getElementsByClassName("character_count")[0].innerText = 22 - firstOption.value.length
+});
+secondOption.addEventListener("keyup",function(){
+  document.getElementsByClassName("character_count")[1].innerText = 22 - secondOption.value.length
+});
+
+</script>

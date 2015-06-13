@@ -27,7 +27,7 @@ class PicksController < ApplicationController
       if @pick.skip == false
         @option.option_picks +=1
         @option.save
-        sleep 1.2
+        sleep 1
         redirect_to "/"
     else
 

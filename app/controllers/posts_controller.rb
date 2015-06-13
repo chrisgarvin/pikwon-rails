@@ -57,7 +57,7 @@ class PostsController < ApplicationController
         @post.save
         redirect_to posts_path
       else
-        render :new
+        redirect_to new_post_path
       end
     end
 
