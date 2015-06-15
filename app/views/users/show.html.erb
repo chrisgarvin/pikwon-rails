@@ -11,7 +11,7 @@
   <h2>member since: <%= current_user.created_at.utc.strftime("%D") %></h2>
 
 <%= link_to "BACK TO PIK'IN", "/" %><%= link_to "EDIT", edit_user_path(current_user) %>
-<%#= link_to "DELETE", user_path(current_user), method: :delete,
+<%= link_to "DELETE", user_path(current_user), method: :delete,
   data: { confirm: "Are you sure you want to delete this account?"} %>
 </div>
 

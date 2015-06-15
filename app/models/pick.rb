@@ -1,4 +1,4 @@
 class Pick < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  belongs_to :option, dependent: :destroy
+  belongs_to :user
+  belongs_to :option
 end

@@ -68,6 +68,26 @@ class UsersController < ApplicationController
 
   end
 
+  def destroy
+
+    @user = User.find(params[:id])
+
+    @userPicks = @user.picks
+    @userPicks.each do |pick|
+      pick.destroy
+    end
+    @userPosts = @user.posts
+    @userPosts.each do |post|
+      post.options.second.destroy
+      post.options.first.destroy
+      post.destroy
+    end
+    @user.destroy
+
+    redirect_to "/"
+
+  end
+
   private
 
   def user_params
