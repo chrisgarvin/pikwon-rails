@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
-  
+
+  default from: "support@pikwon.com"
+
   def welcome_email(user)
-    default from: "support@pikwon.com"
 
     @user = user
     mail(to: @user.email, subject: 'Welcome to Pikwon!')
