@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :posts
-  has_many :picks
-  has_many :picked_options, :through => :picks, :source => :option
+  has_many :posts, dependent: :destroy
+  has_many :picks, dependent: :destroy
+  has_many :picked_options, :through => :picks, :source => :option, dependent: :destroy
 
 #validates handle/email are not duplicates, and all info is present and of
 #proper length and format
