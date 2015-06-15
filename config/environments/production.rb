@@ -28,9 +28,7 @@ Rails.application.configure do
     :authentication => :plain,
     :domain         => 'pikwon.com',
     :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none',
-    :ssl            => true,
-    :tls            => true
+    :openssl_verify_mode  => 'none'
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
