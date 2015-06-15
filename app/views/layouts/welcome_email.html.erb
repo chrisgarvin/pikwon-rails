@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div class="email_container">
+
+    <div class="email_logo">
+      <a href="http://pikwon.herokuapp.com/"><%= image_tag("pikwonlogo.png") %></a>
+    </div>
+    <div class="email_body">
+
+    <h1>HEY <%= @user.fname.upcase %>!</h1>
+    <p>
+      Why am I yelling at you? I'm just excited to be e-mailing you that's all!
+      Thank you oh so kindly for signing up for <a href="http://pikwon.herokuapp.com/">Pikwon</a>, we're thrilled to have you!
+      <br><br>
+      If you have any questions or comments whatsoever, feel free to give us a shout
+      (preferably a polite shout, but it's up to you...)
+      <br><br>
+       Until then, go ahead and Pikwon, and then pik one more!
+      <br><br>
+      Chris Garvin
+      <br>
+      <a href="mailto:name@email.com">Chris@pikwon.com</a>
+    </p>
+
+  </div>
+</div>
+  </body>
+</html>

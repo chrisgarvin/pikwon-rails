@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 initialUser = User.create(:handle => "admin", :fname => "admin", :lname => "admin",
-:email => "admin", :password => "admin", :password_confirmation => "admin")
+:email => ENV["ADMIN_USERNAME"], :password => ENV["ADMIN_PASSWORD"], :password_confirmation => ENV["ADMIN_PASSWORD"])
 
 initialPost = Post.new
 
