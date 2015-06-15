@@ -22,7 +22,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address        => 'mail.pikwon.com',
-    :port           => 465,
+    :port           => 587,
     :user_name      => ENV['PIKWON_SUPPORT_USERNAME'],
     :password       => ENV['PIKWON_SUPPORT_PASSWORD'],
     :authentication => :plain,
