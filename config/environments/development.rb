@@ -23,7 +23,7 @@ Rails.application.configure do
     domain: "pikwon.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    # openssl_verify_mode: 'none',
+    openssl_verify_mode: 'none',
     user_name: ENV['PIKWON_SUPPORT_USERNAME'],
     password: ENV['PIKWON_SUPPORT_PASSWORD']
   }
