@@ -23,12 +23,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.mailgun.org',
     :port           => 587,
-    :user_name      => ENV['PIKWON_SUPPORT_USERNAME'],
-    :password       => ENV['PIKWON_SUPPORT_PASSWORD'],
-    :authentication => :plain,
     :domain         => 'mg.pikwon.com',
+    :authentication => "plain",
     :enable_starttls_auto => true,
-    :openssl_verify_mode => 'none'
+    :openssl_verify_mode => 'none',
+    :user_name      => ENV['PIKWON_SUPPORT_USERNAME'],
+    :password       => ENV['PIKWON_SUPPORT_PASSWORD']
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
