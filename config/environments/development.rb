@@ -18,12 +18,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'locahost:3000'}
 
   config.action_mailer.smtp_settings = {
-    address: "mail.pikwon.com",
+    address: "smtp.gmail.com",
     port: 587,
-    domain: "pikwon.com",
+    domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    openssl_verify_mode: 'none',
     user_name: ENV['PIKWON_SUPPORT_USERNAME'],
     password: ENV['PIKWON_SUPPORT_PASSWORD']
   }

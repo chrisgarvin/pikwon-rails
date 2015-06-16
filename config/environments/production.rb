@@ -19,17 +19,17 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'http://mail.pikwon.com/'}
 
-  config.action_mailer.smtp_settings = {
-    :address        => 'mail.pikwon.com',
-    :port           => 587,
-    :domain         => 'pikwon',
-    :authentication => "plain",
-    :enable_starttls_auto => true,
-    :openssl_verify_mode => 'none',
-    :user_name      => ENV['PIKWON_SUPPORT_USERNAME'],
-    :password       => ENV['PIKWON_SUPPORT_PASSWORD']
-  }
   config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => ENV['PIKWON_SUPPORT_USERNAME'],
+   :password             => ENV['PIKWON_SUPPORT_PASSWORD'],
+   :authentication       => "plain",
+  :enable_starttls_auto => true
+  }
+
 
 #   config.action_mailer.delivery_method = :mailgun
 #   config.action_mailer.mailgun_settings = {
