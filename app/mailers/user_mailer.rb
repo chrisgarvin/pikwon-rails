@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-  default from: "support@mg.pikwon.com"
+  default from: "support@pikwon.com"
 
   def welcome_email(user)
 
