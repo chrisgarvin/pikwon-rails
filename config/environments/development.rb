@@ -17,17 +17,23 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'locahost:3000'}
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.mailgun.org",
-    port: 587,
-    domain: "mg.pikwon.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    openssl_verify_mode: 'none',
-    user_name: ENV['PIKWON_SUPPORT_USERNAME'],
-    password: ENV['PIKWON_SUPPORT_PASSWORD']
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.mailgun.org",
+  #   port: 587,
+  #   domain: "mg.pikwon.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   openssl_verify_mode: 'none',
+  #   user_name: ENV['PIKWON_SUPPORT_USERNAME'],
+  #   password: ENV['PIKWON_SUPPORT_PASSWORD']
+  # }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+        api_key: ENV['MAILGUN_API_KEY'],
+        domain: ENV['MAILGUN_API_URL']
+}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

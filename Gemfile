@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'figaro', '~> 0.7.0'
 
+gem 'mailgun_rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
