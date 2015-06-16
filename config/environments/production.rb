@@ -17,18 +17,18 @@ Rails.application.configure do
 
   # action_mailer settings
 
-  config.action_mailer.default_url_options = { host: 'http://pikwon.herokuapp.com/'}
+  config.action_mailer.default_url_options = { host: 'http://mg.pikwon.com/'}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address        => 'mail.pikwon.com',
+    :address        => 'smtp.mailgun.org',
     :port           => 587,
     :user_name      => ENV['PIKWON_SUPPORT_USERNAME'],
     :password       => ENV['PIKWON_SUPPORT_PASSWORD'],
     :authentication => :plain,
-    :domain         => 'pikwon.com',
+    :domain         => 'mg.pikwon.com',
     :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none'
+    :openssl_verify_mode => 'none'
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application

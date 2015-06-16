@@ -4,17 +4,20 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <div class="email_container">
+    <table align="center" style="width:98%;">
+      <tr>
+        <td align="center">
+    <a href="http://pikwon.herokuapp.com/"><img style="width:300px; text-align:center; margin: 0 auto;" src="http://i.imgur.com/dMtNiMN.png"></a>
 
-    <div class="email_logo">
-      <a href="http://pikwon.herokuapp.com/"><%= image_tag("pikwonlogo.png") %></a>
-    </div>
-    <div class="email_body">
+    <h1 style="color:#3dd9da; text-align:center;">HEY <%= @user.fname.upcase %>!</h1>
 
-    <h1>HEY <%= @user.fname.upcase %>!</h1>
+</td>
+</tr>
+    <table style="width:100%;">
+
     <p>
       Why am I yelling at you? I'm just excited to be e-mailing you that's all!
-      Thank you oh so kindly for signing up for <a href="http://pikwon.herokuapp.com/">Pikwon</a>, we're thrilled to have you!
+      Thank you oh so kindly for signing up for <a style="color:#3dd9da;" href="http://pikwon.herokuapp.com/">Pikwon</a>, we're thrilled to have you!
       <br><br>
       If you have any questions or comments whatsoever, feel free to give us a shout
       (preferably a polite shout, but it's up to you...)
@@ -23,10 +26,22 @@
       <br><br>
       Chris Garvin
       <br>
-      <a href="mailto:chris@pikwon.com">Chris@pikwon.com</a>
-    </p>
+    </table>
+    <table style="width:100%;">
 
-  </div>
-</div>
+      <a style="color:#3dd9da;" href="mailto:chris@pikwon.com">Chris@pikwon.com</a><br>
+      <a style="color:#3dd9da;" href="mailto:support@pikwon.com">Support@pikwon.com</a>
+    </p>
+  </table>
+
+  </table>
   </body>
+  <!-- @media only screen and (max-width: 480px) {
+  /* mobile-specific CSS styles go here */
+  table[class=email], table[class=email-content] {
+    clear: both;
+    width: 320px !important;
+    font-size: 13px !important;
+  }
+} -->
 </html>
