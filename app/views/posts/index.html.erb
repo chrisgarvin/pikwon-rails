@@ -67,7 +67,7 @@ option they'd prefer -->
     <div class="options">
 
       <%= button_to post.options.first.option_text.upcase, picks_path(:id => post.options.first.id,
-      :post => post.id, :skip => false) %>
+      :post => post.id, :skip => false), data: {disable_with: post.options.first.option_text.upcase} %>
 
     </div>
     <div class="test_likes">
@@ -83,7 +83,7 @@ option they'd prefer -->
     <div class="options">
 
       <%= button_to post.options.second.option_text.upcase, picks_path(:id => post.options.second.id,
-      :post => post.id, :skip => false) %>
+      :post => post.id, :skip => false), data: {disable_with: post.options.second.option_text.upcase} %>
 
     </div>
     <div class="test_likes">
@@ -92,7 +92,7 @@ option they'd prefer -->
   <div class="skip">
     <%= button_to "SKIP\nWON",
     picks_path(:id => post.options.first.id,
-    :post => post.id, :skip => true) %>
+    :post => post.id, :skip => true), data: {disable_with: "SKIP\nWON"} %>
   </div>
 
 
