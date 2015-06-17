@@ -43,8 +43,8 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      # redirect_to "/posts"
-      redirect_to user_path(@user.id)
+      redirect_to "/posts"
+      # redirect_to user_path(@user.id)
     else
       render :new
     end
