@@ -46,6 +46,7 @@ class UsersController < ApplicationController
       redirect_to "/posts"
       # redirect_to user_path(@user.id)
     else
+      flash[:message]
       render :new
     end
 
