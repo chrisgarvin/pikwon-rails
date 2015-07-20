@@ -20,5 +20,5 @@ test:
 production:
   <<: *default
   database: pikwon_production
-  username: awesome_blog
-  password: <%= ENV['AWESOME_BLOG_DATABASE_PASSWORD'] %>
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
