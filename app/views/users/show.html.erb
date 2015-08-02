@@ -1,8 +1,7 @@
-<div class="container profile">
-
 <!-- displays current users profile information if signed in   -->
 
 <% if current_user == @user %>
+<div class="container profile">
   <h1 class="header"><%= @headers.shuffle.first.upcase %> <%= current_user.fname.upcase %>. </h1>
   <h2>username: <%= current_user.handle.upcase %></h2>
   <h2>first name: <%= current_user.fname.upcase %></h2>
