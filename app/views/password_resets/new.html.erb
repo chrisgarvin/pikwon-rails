@@ -1,0 +1,16 @@
+<div class="container profile">
+
+  <h1 class="header">FORGOT PASSWORD?</h1>
+  DON'T BE EMBARRASSED, IT HAPPENS TO THE BEST OF US. JUST TELL US THE EMAIL
+  ADDRESS YOU SIGNED UP WITH BELOW.
+
+  <br><br>
+
+  <%= form_tag password_resets_path, :method => :post do %>
+
+  <%= text_field_tag :email, params[:email] %>
+  <%= submit_tag "SUBMIT" %>
+
+  <% end %>
+  <%= link_to "BACK", "/" %>
+</div>

@@ -21,4 +21,11 @@ class User < ActiveRecord::Base
 
   before_create do self.handle.downcase! end
   before_create do self.email.downcase! end
+
+  def send_password_reset
+   UserMailer.password_reset(self).deliver
+  end
+
+
+
 end

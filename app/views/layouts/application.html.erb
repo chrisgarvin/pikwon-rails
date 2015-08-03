@@ -23,7 +23,8 @@
       <%= f.text_field :handle.downcase, :placeholder => "Username".upcase %>
       <%= f.password_field :password, :placeholder => "Password".upcase %>
       <%= f.submit "Log in".upcase, class: "btn-submit" %>
-      <%= link_to "Sign-up".upcase, 'signup' %></a>
+      <%= link_to "Sign-up".upcase, new_user_path %></a><br>
+      <%= link_to "FORGOT PASSWORD", new_password_reset_path %>
     <% end %>
 <% end %>
 </header>

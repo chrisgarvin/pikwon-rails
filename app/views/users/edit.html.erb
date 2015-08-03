@@ -6,7 +6,9 @@
     <%= f.text_field :fname, :placeholder => "FIRST NAME" %><br>
     <%= f.text_field :lname, :placeholder => "LAST NAME" %><br>
     <%= f.email_field :email, :placeholder => "EMAIL" %><br>
-    <%= f.text_field :handle.downcase, :placeholder => "USERNAME" %><br><br>
+    <%= f.text_field :handle.downcase, :placeholder => "USERNAME" %><br>
+    <%= f.password_field :password, :placeholder => "PASSWORD" %><br>
+    <%= f.password_field :password_confirmation, :placeholder => "VERIFY PASSWORD" %><br><br>
     <%= f.submit "CONFIRM CHANGES.", class: "btn-submit", data: { confirm: "Are you sure you want to make this change?"} %>
   <% end %>
   <br>
