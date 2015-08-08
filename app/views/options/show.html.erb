@@ -1,0 +1,24 @@
+<div class="mostPopularContainer">
+  <div class="mostPopular">
+    <h2>MOST PIK'ED</h2>
+
+    <% @options.first(20).each do |option| %>
+      <%= option.option_text %> : <%= option.option_picks %>
+      - posted by: <%= User.find(option.posts.first.user_id).handle %> <br>
+    <% end %>
+
+  </div>
+
+</div>
+
+<div class="leastPopularContainer">
+  <div class="leastPopular">
+    <h2>MOST SKIPPED</h2>
+
+    <% @skipped.first(20).each do |skip| %>
+      <%= skip[:first] %> vs. <%= skip[:last] %> : <%= skip[:skips] %><br>
+    <% end %>
+
+  </div>
+
+</div>

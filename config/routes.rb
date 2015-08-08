@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   get 'picks/' => "picks#like"
   post 'picks/' => "picks#like"
 
-  get 'options/' => "posts#index"
+  get 'options/' => "options#show"
   post 'options/new' => "posts#create"
 
   get 'users/index'
-  
+
   get "users/new" => "users#new", as: :new_user
   get "users/:id" => "users#show", as: :user
   post "users/" => "users#create"
